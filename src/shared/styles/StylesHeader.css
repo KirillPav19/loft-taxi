@@ -1,0 +1,9 @@
+.Style-container-button {
+  flex-direction: row;
+}
+
+.Style-button {
+    height: 50px;
+    width: 100px;
+    color: #09d3ac;
+}

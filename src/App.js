@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import {LoginForm} from './Login/index';
+import {SignUpForm} from './Signup/index';
+import {MapForm} from './Map/index';
+import {ProfileForm} from './Profile/index';
+import {Header} from './shared/header';
+
+const getPage = (page, setPage) => {
+    switch (page) {
+        case "Login":
+            return (
+                <LoginForm setPage={setPage}/>
+            )
+        case "SignUp":
+            return (
+                <SignUpForm setPage={setPage}/>
+            )
+        case "Map":
+            return (
+                <MapForm/>
+            )
+        case "Profile":
+            return (
+                <ProfileForm/>
+            )
+    }
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [page, setPage] = useState("Login")
+    return (
+        <div>
+            <Header setPage={setPage}/>
+            {getPage(page, setPage)}
+        </div>
+    );
 }
 
 export default App;
