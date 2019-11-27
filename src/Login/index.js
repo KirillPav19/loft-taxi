@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import AppConsumer from '../App'
+import {AppConsumer} from '../App'
 
 export const LoginForm = ({setPage, name, navigatePage}) => {
 
     const [state, setState] = useState({
-        login: '',
+        email: '',
         password: ''
     })
 
@@ -13,17 +13,22 @@ export const LoginForm = ({setPage, name, navigatePage}) => {
         <AppConsumer>
             {
                 (context) =>
-                    <form onSubmit={() => context.isLoggedIn ? setPage(navigatePage) : null}>
+                    <form onSubmit={() => context.isLoggedIn ? setPage(navigatePage) : alert('Не верный логин или пароль')}>
                         <h1>{name.toUpperCase()}</h1>
                         <div>
-                            <input type={"email"} placeholder={"email"} onChange={(value) => setState({...state, login: value})}>
+                            <input type={"email"} placeholder={"email"} value={state.email} onChange={(value) => {
+                                setState({...state, email: value.target.value})
+                            }}>
                             </input>
                         </div>
                         <div>
-                            <input type={"password"} placeholder={"password"} onSubmit={(value) => setState({...state, password: value})}>
+                            <input type={"password"} placeholder={"password"} value={state.password}
+                                   onChange={(value) => {
+                                       setState({...state, password: value.target.value})
+                                   }}>
                             </input>
                         </div>
-                        <button className={"Style-button"} onClick={() => context.login(state.login, state.password)}>{name}</button>
+                        <button className={"Style-button"} onClick={() => context.login(state.email, state.password)}>{name}</button>
                     </form>
             }
         </AppConsumer>

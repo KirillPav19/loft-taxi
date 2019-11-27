@@ -1,6 +1,6 @@
 import React from "react";
 import './styles/StylesHeader.css';
-import AppConsumer from '../App'
+import {AppConsumer} from '../App'
 
 export const Header = ({setPage}) => {
     return (

@@ -6,6 +6,7 @@ export const MapForm = ({name}) => {
     return (
         <form>
             <h1>{name}</h1>
+            <Map/>
         </form>
     );
 };

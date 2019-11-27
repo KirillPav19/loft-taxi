@@ -48,8 +48,8 @@ function App() {
     const [page, setPage] = useState('Login')
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-    const login = (login, password) => {
-        if (login === 'loft' && password === '1234') {
+    const login = (email, password) => {
+        if (email === 'loft@.ru' && password === '1234') {
             setIsLoggedIn(true)
             setPage('Map')
         }
