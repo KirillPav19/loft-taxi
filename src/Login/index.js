@@ -1,18 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
+import AppConsumer from '../App'
 
-export const LoginForm = ({setPage}) => {
+export const LoginForm = ({setPage, name, navigatePage}) => {
+
+    const [state, setState] = useState({
+        login: '',
+        password: ''
+    })
+
     return (
-        <form onSubmit={() => setPage("Map")}>
-            <h1>{"LOGIN"}</h1>
-            <div>
-                <input type={"email"} placeholder={"email"}>
-                </input>
-            </div>
-            <div>
-                <input type={"password"} placeholder={"password"}>
-                </input>
-            </div>
-            <button className={"Style-button"}>Login</button>
-        </form>
+        <AppConsumer>
+            {
+                (context) =>
+                    <form onSubmit={() => context.isLoggedIn ? setPage(navigatePage) : null}>
+                        <h1>{name.toUpperCase()}</h1>
+                        <div>
+                            <input type={"email"} placeholder={"email"} onChange={(value) => setState({...state, login: value})}>
+                            </input>
+                        </div>
+                        <div>
+                            <input type={"password"} placeholder={"password"} onSubmit={(value) => setState({...state, password: value})}>
+                            </input>
+                        </div>
+                        <button className={"Style-button"} onClick={() => context.login(state.login, state.password)}>{name}</button>
+                    </form>
+            }
+        </AppConsumer>
     );
 };
+
+LoginForm.propsTypes = {
+    name: PropTypes.string,
+    navigatePage: PropTypes.string,
+    setPage: PropTypes.func,
+}

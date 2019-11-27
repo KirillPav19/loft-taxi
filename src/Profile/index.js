@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
-export const ProfileForm = () => {
+export const ProfileForm = ({name}) => {
     return (
         <form>
-            <h1>{"PROFILE"}</h1>
+            <h1>{name}</h1>
         </form>
     );
 };
+
+ProfileForm.propsTypes = {
+    name: PropTypes.string,
+}

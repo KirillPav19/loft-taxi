@@ -5,34 +5,67 @@ import {MapForm} from './Map/index';
 import {ProfileForm} from './Profile/index';
 import {Header} from './shared/header';
 
+const AppContext = React.createContext({})
+export const AppProvider = AppContext.Provider
+export const AppConsumer = AppContext.Consumer
+
 const getPage = (page, setPage) => {
     switch (page) {
         case "Login":
             return (
-                <LoginForm setPage={setPage}/>
+                <LoginForm setPage={setPage}
+                           name={'Login'}
+                           navigatePage={'Map'}
+                />
             )
         case "SignUp":
             return (
-                <SignUpForm setPage={setPage}/>
+                <SignUpForm setPage={setPage}
+                            name={'Sign Up'}
+                            navigatePage={'Login'}
+
+                />
             )
         case "Map":
             return (
-                <MapForm/>
+                <MapForm name={'Map'}/>
             )
         case "Profile":
             return (
-                <ProfileForm/>
+                <ProfileForm name={'Profile'}/>
+            )
+        default:
+            return (
+                <LoginForm setPage={setPage}
+                           name={'Login'}
+                           navigatePage={'Map'}
+                />
             )
     }
 }
 
 function App() {
-    const [page, setPage] = useState("Login")
+    const [page, setPage] = useState('Login')
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    const login = (login, password) => {
+        if (login === 'loft' && password === '1234') {
+            setIsLoggedIn(true)
+            setPage('Map')
+        }
+    }
+
+    const logout = () => {
+        setIsLoggedIn(false)
+        setPage('Login')
+    }
     return (
-        <div>
-            <Header setPage={setPage}/>
-            {getPage(page, setPage)}
-        </div>
+        <AppProvider value={{login, logout, isLoggedIn}}>
+            <div>
+                <Header setPage={setPage}/>
+                {getPage(page, setPage)}
+            </div>
+        </AppProvider>
     );
 }
 
