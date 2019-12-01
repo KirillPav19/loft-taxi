@@ -62,7 +62,7 @@ function App() {
     return (
         <AppProvider value={{login, logout, isLoggedIn}}>
             <div>
-                <Header setPage={setPage}/>
+                <Header setPage={setPage} id={'header'}/>
                 {getPage(page, setPage)}
             </div>
         </AppProvider>
