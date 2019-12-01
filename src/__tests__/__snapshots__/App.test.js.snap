@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<div>
+  <div
+    className="Style-container-button"
+  >
+    <button
+      className="Style-button"
+      onClick={[Function]}
+    >
+      Login
+    </button>
+    <button
+      className="Style-button"
+      onClick={[Function]}
+    >
+      SingUp
+    </button>
+    <button
+      className="Style-button"
+      onClick={[Function]}
+    >
+      Map
+    </button>
+    <button
+      className="Style-button"
+      onClick={[Function]}
+    >
+      Profile
+    </button>
+    <button
+      className="Style-button"
+      onClick={[Function]}
+    >
+      Exit
+    </button>
+  </div>
+  <form
+    onSubmit={[Function]}
+  >
+    <h1>
+      LOGIN
+    </h1>
+    <div>
+      <input
+        onChange={[Function]}
+        placeholder="email"
+        type="email"
+        value=""
+      />
+    </div>
+    <div>
+      <input
+        onChange={[Function]}
+        placeholder="password"
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="Style-button"
+      onClick={[Function]}
+    >
+      Login
+    </button>
+  </form>
+</div>
+`;
